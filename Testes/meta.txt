@@ -1,0 +1,23 @@
+Sistema de gerenciamento de usuarios
+
+LOGIN x
+CADASTRO DE USUARIO  x
+MOSTRAR USUARIO x
+DELETAR USUARIO x
+
+MODIFICAR{
+  nomexx
+  cargox
+  senhax
+}
+
+logsx
+
+LOGOUTx
+
+(DIFERENCIAL PESQUISAR)x
+(DIFERENCIAL PERSISTÊNCIA DE DADOS)
+(DIFERENCIAL JANELA)
+
+
+

@@ -1,5 +1,5 @@
 
-from modules import database,menu,showUsers,logs,session,appError
+from modules import database,menu,showUsers,logs,session,appError,utils
 
 queryDeleteConfirm = 'N'
 deleteConfirm = False
@@ -28,6 +28,8 @@ def deleteUser():
         deleteQuery = input('digite o *ID* Deseja deletar: ')
 
         if(deleteQuery == session.sessionID):
+            utils.next()
+            utils.clear()
             appError.add('Você não pode deletar você mesmo!')
             deleteUser()
 
@@ -68,9 +70,14 @@ def deleteUser():
                 return menu.handleUserInput()    
         else:
           appError.add('*ID* inválido!')  
+          utils.next()
+          utils.clear()
           return deleteUser()
     else:
+
         print('Não encontrado')
+        utils.next()
+        utils.clear()
         menu.drawMenu()
         return menu.handleUserInput()
 

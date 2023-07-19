@@ -28,6 +28,7 @@ def getRole():
 
 
 def modifyOptions(searchIndex):
+    session.update()
     print('O que deseja modificar?')
     appError.showLastError()
     option = input('[1] Nome\n[2] Senha\n[3] Cargo\n[4] TokenID\n[5] Tudo\n[0] Sair\n>> ')
@@ -37,6 +38,7 @@ def modifyOptions(searchIndex):
         utils.clear()
         print('Modificar nome')
         database.users[searchIndex] = registerUser.getUser()
+        session.update()
         logs.add(f'{session.sessionUsername} Modificou o usuário {database.users[searchIndex]}')
 
 
@@ -45,6 +47,7 @@ def modifyOptions(searchIndex):
         utils.clear()
         print('Modificar senha')
         database.password[searchIndex] = registerUser.getPass()
+        session.update()
         logs.add(f'{session.sessionUsername} Modificou o usuário {database.users[searchIndex]}')
 
 
@@ -52,6 +55,7 @@ def modifyOptions(searchIndex):
         utils.clear()
         print('Modificar cargo')
         database.roles[searchIndex] = getRole()
+        session.update()
         logs.add(f'{session.sessionUsername} Modificou o usuário {database.users[searchIndex]}')
 
 
@@ -59,16 +63,19 @@ def modifyOptions(searchIndex):
         utils.clear()
         print('Modificar Token')
 
-        database.tokenID[searchIndex] = registerUser.getToken()     
+        database.tokenID[searchIndex] = registerUser.getToken()   
+        session.update()  
         logs.add(f'{session.sessionUsername} Modificou o usuário {database.users[searchIndex]}')   
 
     elif(option == '5'):
         utils.clear()
         print('Modificar tudo')
         modifyAll(searchIndex) 
+        session.update()
         logs.add(f'{session.sessionUsername} Modificou o usuário {database.users[searchIndex]}')
+
     elif(option == '0'):
-        print('Retornando ao MENU')
+        utils.clear()
         menu.drawMenu()
         menu.handleUserInput()
 
@@ -98,6 +105,8 @@ def modifyAll(searchIndex):
         database.password[queryIndex] = newPassword
         database.roles[queryIndex] = newRole
         database.tokenID[queryIndex] = newTokenID
+
+        session.forceCreateSession(queryIndex)
 
         appError.clear()
         showUsers.showAllUsers()

@@ -17,3 +17,6 @@ def dateSuffix():
 
 def clear():
    os.system('cls')
+
+def next():
+   return input('Pressione qualquer tecla para continuar!')

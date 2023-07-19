@@ -46,7 +46,7 @@ session.createSession(
 
 # profile.drawOptionsMenu()
 
-search.searchByName()
+# search.searchByName()
 
-# menu.drawMenu()
-# menu.handleUserInput()
+menu.drawMenu()
+menu.handleUserInput()

@@ -31,7 +31,8 @@ def login():
     if(userTokenID.lower() in database.tokenID):
       userPassword = input('Digite a senha\n>> ')
       utils.clear()
-      tempID = database.users.index(userTokenID)
+
+      tempID = database.tokenID.index(userTokenID)
 
       if(userPassword.lower() == database.password[tempID]):
         startAuth(tempID)
@@ -47,6 +48,7 @@ def login():
 def loginPanel():
 
   while True:
+    session.resetValues()
     utils.clear()
     print('=> FAÇA LOGIN PARA ACESSAR TODOS OS RECURSOS')
     appError.showLastError()

@@ -1,4 +1,4 @@
-from modules import database,menu,utils,login,session
+from modules import database,menu,utils,login,session,logs
 
 biggestName = 0
 
@@ -41,11 +41,11 @@ def showAllUsers():
   print('---------------------')
   print('\n\n')
 
-
+  logs.add(f'{session.sessionUsername} Fez uma consulta no banco de usuarios')
   input('Pressione *ENTER* para continuar')
   utils.clear() 
 
-  tempIndex = database.users.index(session.sessionUsername)
+  # tempIndex = database.users.index(session.sessionUsername)
 
-  return login.startAuth(tempIndex)
+  return login.startAuth(session.sessionIndex)
 
